@@ -1,0 +1,27 @@
+# Dataset files (download links in README.md)
+subset0/
+subset1/
+annotations.csv
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache/artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Logs
+*.log
