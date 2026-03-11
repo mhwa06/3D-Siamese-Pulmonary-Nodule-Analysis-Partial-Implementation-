@@ -53,6 +53,13 @@ This repo follows that same motivation:
   - Precision / Recall / F1 (classification report)
   - ROC-AUC
   - ROC curve and confusion matrix visualization
+- Retrieval-style re-identification evaluation:
+  - Top-k candidate ranking accuracy
+  - Mean reciprocal rank (MRR)
+  - Qualitative ranked-candidate inspection for one query nodule
+- Continuation ablations added in new notebook cells without modifying the original pipeline:
+  - Contrastive-loss Siamese baseline
+  - Concatenation-head BCE Siamese baseline
 - Best-model checkpoint saving:
   - `siamese_3d_luna16_series_split.pth`
 
@@ -83,6 +90,26 @@ Also verified:
 - Validation pair reproducibility: `True`
 - Validation label reproducibility: `True`
 
+Additional continuation experiments:
+- **Retrieval-style evaluation (baseline BCE model)**:
+  - Top-1 retrieval accuracy: `0.7407`
+  - Top-3 retrieval accuracy: `1.0000`
+  - Top-5 retrieval accuracy: `1.0000`
+  - Mean reciprocal rank: `0.8611`
+- **Contrastive-loss branch**:
+  - Validation accuracy: `0.7963`
+  - ROC-AUC: `0.8621`
+  - Retrieval top-1: `0.5741`
+  - Retrieval top-3: `0.7593`
+- **Concatenation-head BCE branch**:
+  - Validation accuracy: `0.8113`
+  - ROC-AUC: `0.8825`
+  - Retrieval top-1: `0.3889`
+  - Retrieval top-3: `0.6481`
+
+Takeaway:
+- The original **absolute-difference + BCE** Siamese model remains the strongest variant in this notebook setup for both pair classification and retrieval-style matching.
+
 ### Training Curves
 
 ![Training and Validation Loss](train_val_loss.png)
@@ -103,6 +130,7 @@ Also verified:
 - Registration-free matching philosophy.
 - Isotropic preprocessing and volumetric patches.
 - Longitudinal reasoning via pairwise similarity.
+- Objective/head comparisons inspired by the paper's multi-model evaluation strategy.
 
 ### What is simplified/different
 - No private VH-Lung longitudinal follow-up dataset.
@@ -115,11 +143,13 @@ Even with the simplifications, this implementation demonstrates the paper's tech
 - A 3D Siamese model can learn clinically relevant patch similarity.
 - Careful split strategy and deterministic validation make evaluation more trustworthy.
 - Harder negatives improve realism of the matching task.
+- Retrieval-style evaluation moves the notebook closer to actual re-identification behavior.
+- Objective/head ablations provide a paper-aligned comparison rather than a single-model result.
 
 This is a strong proof-of-concept baseline for extending toward true longitudinal growth detection when suitable follow-up data are available.
 
 ## Repository Contents
-- `main.ipynb`: end-to-end workflow (preprocessing, extraction, pairing, training, evaluation, growth proxy).
+- `main.ipynb`: end-to-end workflow plus continuation experiments for retrieval-style matching, contrastive loss, and head-design ablations.
 - `requirements.txt`: Python dependencies.
 - `siamese_3d_luna16_partial.pth`: earlier model checkpoint.
 - `siamese_3d_luna16_series_split.pth`: best-model checkpoint from improved setup.
