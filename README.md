@@ -83,6 +83,20 @@ Also verified:
 - Validation pair reproducibility: `True`
 - Validation label reproducibility: `True`
 
+### Training Curves
+
+![Training and Validation Loss](train_val_loss.png)
+![Training and Validation Accuracy](train_val_accuracy.png)
+
+### Evaluation
+
+![Confusion Matrix](confusion_matirx.png)
+![ROC Curve](roc_curve.png)
+
+### Synthetic Growth Proxy
+
+![Synthetic Growth Pair](synthetic_growth_pair.png)
+
 ## Relation to the Original Paper
 ### What aligns
 - 3D Siamese formulation for nodule re-identification.
