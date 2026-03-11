@@ -109,7 +109,7 @@ This is a strong proof-of-concept baseline for extending toward true longitudina
 - `requirements.txt`: Python dependencies.
 - `siamese_3d_luna16_partial.pth`: earlier model checkpoint.
 - `siamese_3d_luna16_series_split.pth`: best-model checkpoint from improved setup.
-- `annotations.csv`, `subset0/`, `subset1/`: input data.
+- `annotations.csv`, `subset0/`, `subset1/`: input data (not included in this repo — download from [https://zenodo.org/records/3723295](https://zenodo.org/records/3723295)).
 
 ## Setup
 Install dependencies:
@@ -127,8 +127,11 @@ If you use this work, please cite the original paper that inspired the approach:
 
 (Use the official bibliographic entry from the publication venue in your report.)
 
-## Original Challenge Dataset Links
-Official links shared for the original challenge/dataset resources:
+## Dataset Download
 
-- https://zenodo.org/records/3723295
-- https://zenodo.org/records/4121926
+The dataset files (`subset0/`, `subset1/`, `annotations.csv`) are **not included in this repository** due to size. Download them from:
+
+- **Primary (used in this project):** https://zenodo.org/records/3723295
+- **Additional LUNA16 resource:** https://zenodo.org/records/4121926
+
+After downloading, place `subset0/` and `subset1/` folders and `annotations.csv` in the root of the repository before running `main.ipynb`.
